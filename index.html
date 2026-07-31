@@ -161,11 +161,15 @@ button.jump span{font-size:.74rem;color:var(--lilac)}
 .divider h2{font-size:clamp(1.9rem,5vw,3.4rem);font-weight:700;text-transform:uppercase;margin:8px 0 12px}
 .divider p.sub{color:var(--lilac);max-width:66ch;font-size:clamp(.95rem,1.6vw,1.08rem);margin-bottom:26px}
 .prev{display:flex;flex-wrap:wrap;gap:12px}
+/* 4-card sections: force a 2x2 by capping each card near half width */
+.prev.quad button.pcard{flex:1 1 calc(25% - 9px);min-width:0;max-width:calc(25% - 9px)}
+@media(max-width:820px){.prev.quad button.pcard{flex-basis:calc(50% - 6px);max-width:calc(50% - 6px)}}
+@media(max-width:520px){.prev.quad button.pcard{flex-basis:100%;max-width:100%}}
 button.pcard{flex:1 1 calc(33.333% - 8px);min-width:230px;max-width:calc(33.333% - 8px);background:transparent;border:0;padding:0;text-align:left;cursor:pointer;color:#fff;transition:transform .18s}
-button.pcard:hover{transform:translateY(-2px)}
-button.pcard:hover .cover{border-color:var(--red)}
 @media(max-width:820px){button.pcard{max-width:100%;flex-basis:calc(50% - 6px)}}
 @media(max-width:520px){button.pcard{flex-basis:100%}}
+button.pcard:hover{transform:translateY(-2px)}
+button.pcard:hover .cover{border-color:var(--red)}
 .pcard .cover{width:100%;aspect-ratio:2/1;background:rgba(255,255,255,.05);border:1.5px dashed rgba(255,255,255,.35);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.58rem;letter-spacing:.16em;color:var(--lilac);text-transform:uppercase;overflow:hidden;transition:border-color .18s}
 .pcard .cover img{width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:inherit}
 .pcard .ptxt{display:block;padding:11px 2px 0}
@@ -186,8 +190,15 @@ button.pcard:hover .cover{border-color:var(--red)}
 .body1 .sb p{max-width:74ch}
 .sb p + p{margin-top:8px}
 .side{display:flex;flex-direction:column;gap:8px;min-width:0}
-.side .media{flex:1;min-height:250px}
-.side .media.portrait{flex:0 0 auto;aspect-ratio:4/5;min-height:0}
+.side .media{flex:0 0 auto;aspect-ratio:3/2;min-height:0}
+.side .media.embed{aspect-ratio:16/9;background:#000}
+.media.embed iframe{width:100%;height:100%;border:0;display:block}
+.side .media.ytlink{position:relative;display:block;aspect-ratio:16/9;flex:0 0 auto;border-radius:var(--r-md);overflow:hidden;text-decoration:none}
+.media.ytlink img{width:100%;height:100%;object-fit:cover;display:block}
+.media.ytlink .playbadge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:999px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;padding-left:4px;box-shadow:0 6px 18px rgba(0,0,0,.35);transition:transform .18s}
+.media.ytlink:hover .playbadge{transform:translate(-50%,-50%) scale(1.08)}
+.side .media.portrait{aspect-ratio:4/5}
+.media.landscape{aspect-ratio:16/9}
 .side .grow0{flex:0 0 auto}
 
 /* ---------- media ---------- */
@@ -370,11 +381,11 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     </div>
     <div class="jumplabel">Click to jump straight to a section</div>
     <div class="jumps">
-      <button class="jump" data-target="s1"><span class="rn">I</span><b>Visual Direction</b><span>5 cases + a visual study</span></button>
+      <button class="jump" data-target="s1"><span class="rn">I</span><b>Visual Direction</b><span>4 cases + a visual study</span></button>
       <button class="jump" data-target="s2"><span class="rn">II</span><b>Experiential &amp; Activations</b><span>3 cases</span></button>
       <button class="jump" data-target="s3"><span class="rn">III</span><b>Cultural Fluency</b><span>2 moments</span></button>
-      <button class="jump" data-target="s4"><span class="rn">IV</span><b>Creator Economy &amp; Partnerships</b><span>3 moments</span></button>
-      <button class="jump" data-target="s5"><span class="rn">V</span><b>Social, Growth &amp; Performance</b><span>5 cases</span></button>
+      <button class="jump" data-target="s4"><span class="rn">IV</span><b>Creator Economy &amp; Partnerships</b><span>2 moments</span></button>
+      <button class="jump" data-target="s5"><span class="rn">V</span><b>Social, Growth &amp; Performance</b><span>4 cases</span></button>
       <button class="jump" data-target="s6"><span class="rn">VI</span><b>Building Creative Teams</b><span>the playbook</span></button>
     </div>
   </div>
@@ -386,50 +397,25 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <div class="rn">I</div>
     <h2>Visual Direction</h2>
     <p class="sub">Taste, concept to launch, and brand development. Driving concepts and art direction from idea to final execution, and guiding work toward sharper, stronger outputs.</p>
-    <div class="prev">
-      <button class="pcard" data-target="c01"><span class="cover"><img class="auto" src="cover-case-01.jpg" onerror="this.remove()" alt="">CASE 01 COVER IMAGE</span><span class="ptxt"><span class="n">01</span><b>Print &amp; Publication</b></span></button>
-      <button class="pcard" data-target="c02"><span class="cover"><img class="auto" src="cover-case-02.jpg" onerror="this.remove()" alt="">CASE 02 COVER IMAGE</span><span class="ptxt"><span class="n">02</span><b>Editorial &amp; Styling</b></span></button>
+    <div class="prev quad">
+      <button class="pcard" data-target="c01"><span class="cover"><img class="auto" src="cover-case-01.jpg" onerror="this.remove()" alt="">CASE 01 COVER IMAGE</span><span class="ptxt"><span class="n">01</span><b>Editorial &amp; Styling</b></span></button>
+      <button class="pcard" data-target="c02"><span class="cover"><img class="auto" src="cover-case-02.jpg" onerror="this.remove()" alt="">CASE 02 COVER IMAGE</span><span class="ptxt"><span class="n">02</span><b>Print &amp; Publication</b></span></button>
       <button class="pcard" data-target="c03"><span class="cover"><img class="auto" src="cover-case-03.jpg" onerror="this.remove()" alt="">CASE 03 COVER IMAGE</span><span class="ptxt"><span class="n">03</span><b>Web Redesign</b></span></button>
-      <button class="pcard" data-target="c04"><span class="cover"><img class="auto" src="cover-case-04.jpg" onerror="this.remove()" alt="">CASE 04 COVER IMAGE</span><span class="ptxt"><span class="n">04</span><b>Employer Brand</b></span></button>
-      <button class="pcard" data-target="c05"><span class="cover"><img class="auto" src="cover-case-05.jpg" onerror="this.remove()" alt="">CASE 05 COVER IMAGE</span><span class="ptxt"><span class="n">05</span><b>Brand Development</b></span></button>
+      <button class="pcard" data-target="c04"><span class="cover"><img class="auto" src="cover-case-04.jpg" onerror="this.remove()" alt="">CASE 04 COVER IMAGE</span><span class="ptxt"><span class="n">04</span><b>Brand Development</b></span></button>
     </div>
   </div>
 </section>
 
-<!-- CASE 01 WARTIME -->
+
+
+
+
+
+
+<!-- CASE 01 EDITORIAL & STYLING -->
 <section class="slide" id="c01">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 01</span><span class="industry">Nonprofit &amp; Civic</span></div>
-    <h2 class="big">Wartime</h2>
-    <p class="kicker">An award-winning cultural publication, directed from blank page to 50,000 copies.</p>
-    <div class="pills">
-      <span class="pill"><b>My role</b>Art Director, Creative Producer</span>
-      <span class="pill"><b>Stakeholders</b>Executive Leadership</span>
-      <span class="pill"><b>Collaborators</b>Illustrators, writers, designers, printers</span>
-    </div>
-    <div class="body2">
-      <div class="txt">
-        <div class="sb"><div class="sl">Concept</div><p>I audited 50+ best-in-class print publications (magazine, newspaper) to define the standard, then conceived the format evolution: from a black and white pamphlet, to a full color magazine on heavy cardstock, to a tabloid-style Special Edition built for an unconventional distribution model through gyms, barbershops, bookstores, and community centers.</p></div>
-        <div class="sb"><div class="sl">Craft</div><p>Led cover direction and interior spread systems where type and color do the storytelling. Directed illustrators and designers spread by spread, holding every page to the standard the audit set. Tested 10 versions of paper and cardstock to compare color analysis and physical feel before going to print.</p></div>
-        <div class="sb"><div class="sl">Execution</div><p>Issue No. 3 won the 2021 Florida Print Award for Best Use of Color in Design. The tabloid model unlocked quarterly releases and 50,000 copies distributed nationwide.</p></div>
-      </div>
-      <div class="side">
-        <div class="media gal portrait" data-images="wartime-01.jpg|wartime-02.jpg|wartime-03.jpg" data-caps="Cover, Issue No. 3|Interior spread|Interior spread"><img class="auto" src="wartime-01.jpg" onerror="this.remove()" alt=""><div class="ph">Wartime covers + spreads</div></div>
-        <p class="tapnote grow0">Click to open and browse the full set of spreads, right here in the deck.</p>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>1</b><span>Florida Print Award</span></div>
-      <div class="stat"><b>50K</b><span>copies nationwide</span></div>
-      <div class="stat"><b>4x</b><span>yearly releases unlocked</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE 02 EDITORIAL & STYLING -->
-<section class="slide" id="c02">
-  <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 02</span><span class="industry">Editorial &amp; Fashion</span></div>
+    <div class="case-top"><span class="casenum">CASE 01</span><span class="industry">Editorial &amp; Fashion</span></div>
     <h2 class="big">Editorial &amp; Styling</h2>
     <p class="kicker">Editorials I produced and developed end to end: concept, art direction, styling, movement direction, and in listed cases, photography. Built entirely on secondhand, vintage, and reworked fashion, collaborating with independent artists.</p>
     <div class="pills">
@@ -437,14 +423,22 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
       <span class="pill"><b>Stakeholders</b>Personal Portfolio and Collaborations</span>
       <span class="pill"><b>Collaborators</b>Dancers, Photographers, Vintage Archivists, Independent Designers, Backdrop Artists</span>
     </div>
-    <div class="body1">
-      <div class="sb"><div class="sl">Concept</div><p>Each shoot starts from a single reference thesis: an era, a silhouette, a piece of music, a building, or a film reference. Secondhand garments are sourced and treated as living material essential to the narrative and physical expression.</p></div>
-      <div class="sb"><div class="sl">Craft</div><p>Styling vintage and reworked pieces, then directing how the clothes move on the body. Trained as a movement artist, I direct fashion the way choreography is directed: framing, lighting, and gesture as integral decisions. Working with photographers and cinematographers to capture dynamic movement.</p></div>
-      <div class="sb"><div class="sl">Execution</div><p>A multiyear portfolio of movement-based editorial work: a deep understanding of how to capture moving image that translates across platforms and resonates with audiences, and a community of artists and technicians who create best-in-class work.</p></div>
+    <div class="body2">
+      <div class="txt">
+        <div class="sb"><div class="sl">Concept</div><p>Each shoot starts from a single reference thesis: an era, a silhouette, a piece of music, a building, or a film reference. Secondhand garments are sourced and treated as living material essential to the narrative and physical expression.</p></div>
+        <div class="sb"><div class="sl">Craft</div><p>Styling vintage and reworked pieces, then directing how the clothes move on the body. Trained as a movement artist, I direct fashion the way choreography is directed: framing, lighting, and gesture as integral decisions. Working with photographers and cinematographers to capture dynamic movement.</p></div>
+        <div class="sb"><div class="sl">Execution</div><p>A multiyear portfolio of movement-based editorial work: a deep understanding of how to capture moving image that translates across platforms and resonates with audiences, and a community of artists and technicians who create best-in-class work.</p></div>
+      </div>
+      <div class="side">
+        <a class="media ytlink" href="https://www.youtube.com/watch?v=QmkjRuF1qBU" target="_blank" rel="noopener" aria-label="Watch the editorial film on YouTube">
+          <img class="auto" src="https://img.youtube.com/vi/QmkjRuF1qBU/hqdefault.jpg" alt="Editorial film">
+          <span class="playbadge" aria-hidden="true">&#9654;</span>
+        </a>
+        <p class="tapnote grow0">Click to watch the editorial film (opens YouTube).</p>
+      </div>
     </div>
   </div>
 </section>
-
 <!-- VISUAL RECORD (follows Case 02) -->
 <section class="slide" id="vs">
   <div class="inner">
@@ -474,7 +468,35 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <p class="tapnote" style="margin-top:12px;text-align:left">Each cover opens its own collection. Add frames to a project by extending its data-images list; add a project by copying a whole .vr block.</p>
   </div>
 </section>
-
+<!-- CASE 02 WARTIME -->
+<section class="slide" id="c02">
+  <div class="inner">
+    <div class="case-top"><span class="cSE 02</span><span class="industry">Nonprofit &amp; Civic</span></div>
+    <h2 class="big">Wartime</h2>
+    <p class="kicker">An award-winning cultural publication, directed from blank page to 50,000 copies.</p>
+    <div class="pills">
+      <span class="pill"><b>My role</b>Art Director, Creative Producer</span>
+      <span class="pill"><b>Stakeholders</b>Executive Leadership</span>
+      <span class="pill"><b>Collaborators</b>Illustrators, writers, designers, printers</span>
+    </div>
+    <div class="body2">
+      <div class="txt">
+        <div class="sb"><div class="sl">Concept</div><p>I audited 50+ best-in-class print publications (magazine, newspaper) to define the standard, then conceived the format evolution: from a black and white pamphlet, to a full color magazine on heavy cardstock, to a tabloid-style Special Edition built for an unconventional distribution model through gyms, barbershops, bookstores, and community centers.</p></div>
+        <div class="sb"><div class="sl">Craft</div><p>Led cover direction and interior spread systems where type and color do the storytelling. Directed illustrators and designers spread by spread, holding every page to the standard the audit set. Tested 10 versions of paper and cardstock to compare color analysis and physical feel before going to print.</p></div>
+        <div class="sb"><div class="sl">Execution</div><p>Issue No. 3 won the 2021 Florida Print Award for Best Use of Color in Design. The tabloid model unlocked quarterly releases and 50,000 copies distributed nationwide.</p></div>
+        <div class="stats">
+          <div class="stat"><b>1</b><span>Florida Print Award</span></div>
+          <div class="stat"><b>50K</b><span>copies nationwide</span></div>
+          <div class="stat"><b>4x</b><span>yearly releases unlocked</span></div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="media gal portrait" data-images="wartime-01.jpg|wartime-02.jpg|wartime-03.jpg" data-caps="Cover, Issue No. 3|Interior spread|Interior spread"><img class="auto" src="wartime-01.jpg" onerror="this.remove()" alt=""><div class="ph">Wartime covers + spreads</div></div>
+        <p class="tapnote grow0">Click to open and browse the full set of spreads, right here in the deck.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- CASE 03 WEB REDESIGN -->
 <section class="slide" id="c03">
   <div class="inner">
@@ -504,45 +526,10 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     </div>
   </div>
 </section>
-
-<!-- CASE 04 EMPLOYER BRAND -->
+<!-- CASE 04 OREHA -->
 <section class="slide" id="c04">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 04</span><span class="industry">Venture Capital</span></div>
-    <h2 class="big">Employer Brand</h2>
-    <p class="kicker">Talent-centric storytelling built for the candidate rather than the company, concept to launch across 42 global offices.</p>
-    <div class="pills">
-      <span class="pill"><b>My role</b>Art &amp; Creative Direction, Copy, Creative Production</span>
-      <span class="pill"><b>Stakeholders</b>Executive Leadership, People, Marketing, Prospective Talent</span>
-      <span class="pill"><b>Collaborators</b>Videographers, designers, universities, IT/AV</span>
-    </div>
-    <div class="body2">
-      <div class="txt">
-        <div class="sb"><div class="sl">Concept</div><p>The employee story had been told at staff, not by them. UX research and A/B testing shaped a candidate-first narrative across the careers site, a global internship campaign, and a testimonial film series where staff speak in their own words.</p></div>
-        <div class="sb"><div class="sl">Craft</div><p>Competitor analysis and research into hiring trends informed design direction for the careers page, creative direction and copy for the intern promotional video, and story direction for the testimonial series, launched within a 4 month sprint.</p></div>
-        <div class="sb"><div class="sl">Execution</div><p>Delivered a fully reworked careers page, an internship promotional campaign for the 2026 recruitment cycle, and a stronger employer brand on university campuses for recruiting.</p></div>
-        <div class="stats">
-          <div class="stat"><b>+620%</b><span>applications</span></div>
-          <div class="stat"><b>98</b><span>cohort NPS</span></div>
-          <div class="stat"><b>5</b><span>university partnerships (Ivy League, International)</span></div>
-        </div>
-      </div>
-      <div class="side">
-        <div class="media gal" data-images="endeavor-01.jpg|endeavor-02.jpg|endeavor-03.jpg" data-caps="Careers page|Film still|Film still"><img class="auto" src="endeavor-01.jpg" onerror="this.remove()" alt=""><div class="ph">Careers page + film stills</div></div>
-        <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
-        <!-- To embed a YouTube/Vimeo player instead: remove the "gal" class and
-             replace this div's inner content with the platform's <iframe> embed code. -->
-        <div class="media gal grow0" style="min-height:150px" data-images="endeavor-film.mp4" data-caps="The testimonial film"><video class="auto" src="endeavor-film.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Testimonial film</div></div>
-        <p class="tapnote grow0">Click to watch the film, right here in the deck.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE 05 OREHA -->
-<section class="slide" id="c05">
-  <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 05</span><span class="industry">Brand Development</span></div>
+    <div class="case-top"><span class="casenum">CASE 04</span><span class="industry">Brand Development</span></div>
     <h2 class="big">Oreha Global, Building From Zero</h2>
     <p class="kicker">Full brand identity development for my multilingual community events organization. Pre-launch; shared here in confidence.</p>
     <div class="pills">
@@ -575,13 +562,40 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <h2>Experiential &amp; Activations</h2>
     <p class="sub">Ideas that live as experiences, activations, products, and content ecosystems. Brands becoming physical spaces, and art becoming live.</p>
     <div class="prev">
+      <button class="pcard" data-target="c05"><span class="cover"><img class="auto" src="cover-case-05.jpg" onerror="this.remove()" alt="">CASE 05 COVER IMAGE</span><span class="ptxt"><span class="n">05</span><b>Lyle Gallery: Sculpture in Motion</b></span></button>
       <button class="pcard" data-target="c06"><span class="cover"><img class="auto" src="cover-case-06.jpg" onerror="this.remove()" alt="">CASE 06 COVER IMAGE</span><span class="ptxt"><span class="n">06</span><b>Chillhouse Activations</b></span></button>
-      <button class="pcard" data-target="c07"><span class="cover"><img class="auto" src="cover-case-07.jpg" onerror="this.remove()" alt="">CASE 07 COVER IMAGE</span><span class="ptxt"><span class="n">07</span><b>Lyle Gallery: Sculpture in Motion</b></span></button>
-      <button class="pcard" data-target="c08"><span class="cover"><img class="auto" src="cover-case-08.jpg" onerror="this.remove()" alt="">CASE 08 COVER IMAGE</span><span class="ptxt"><span class="n">08</span><b>Glossier</b></span></button>
+      <button class="pcard" data-target="c07"><span class="cover"><img class="auto" src="cover-case-07.jpg" onerror="this.remove()" alt="">CASE 07 COVER IMAGE</span><span class="ptxt"><span class="n">07</span><b>Glossier &amp; The Consistency Project</b></span></button>
     </div>
   </div>
 </section>
 
+
+
+
+<!-- CASE 05 LYLE GALLERY -->
+<section class="slide" id="c05">
+  <div class="inner">
+    <div class="case-top"><span class="casenum">CASE 05</span><span class="industry">Commercial Art</span></div>
+    <h2 class="big">Lyle Gallery, Sculpture in Motion</h2>
+    <p class="kicker">A live movement performance pitched, cast, and directed inside an artist's exhibition opening.</p>
+    <div class="pills">
+      <span class="pill"><b>My role</b>Concept, Pitch, Casting, Movement Direction</span>
+      <span class="pill"><b>Stakeholders</b>Gallery, Exhibiting Artist</span>
+      <span class="pill"><b>Collaborators</b>Alvin Ailey Professional Dancer</span>
+    </div>
+    <div class="body2">
+      <div class="txt">
+        <div class="sb"><div class="sl">Concept</div><p>I pitched Lyle Gallery a live movement performance concept meant to engage visual artists, dancers, and audiences in a nontraditional performance experience that shifted how patrons and viewers engage with performance and art in commercial spaces. Blending the barriers between the dance and art worlds and dissolving hierarchies in both.</p></div>
+        <div class="sb"><div class="sl">Craft</div><p>Casting the right dancer for sculptural paper garments, made by Karina Sharif, that are known to constrain movement. Then directing choreography in close collaboration with the gallery and artist so the performance honored the work rather than upstaging it. Featuring a renowned professional dancer from Alvin Ailey American Dance Theater wearing the sculptural work: Karina Sharif's wearable sculptures become the garment; the garment becomes choreography.</p></div>
+        <div class="sb"><div class="sl">Execution</div><p>Inaugural performance delivered at the exhibition opening, featuring a sold out crowd of 100 guests. Collaborated with a videographer and photographer to capture the performance during a private and public showing, archiving the work permanently.</p></div>
+      </div>
+      <div class="side">
+        <div class="media gal" data-images="lyle-performance.mp4|lyle-01.jpg|lyle-02.jpg" data-caps="Performance footage|Opening night|The sculptural garment"><video class="auto" src="lyle-performance.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Performance footage</div></div>
+        <p class="tapnote grow0">Click to watch the performance and browse stills, right here in the deck.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- CASE 06 CHILLHOUSE ACTIVATIONS -->
 <section class="slide" id="c06">
   <div class="inner">
@@ -606,38 +620,12 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     </div>
   </div>
 </section>
-
-<!-- CASE 07 LYLE GALLERY -->
+<!-- CASE 07 GLOSSIER & TCP -->
 <section class="slide" id="c07">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 07</span><span class="industry">Commercial Art</span></div>
-    <h2 class="big">Lyle Gallery, Sculpture in Motion</h2>
-    <p class="kicker">A live movement performance pitched, cast, and directed inside an artist's exhibition opening.</p>
-    <div class="pills">
-      <span class="pill"><b>My role</b>Concept, Pitch, Casting, Movement Direction</span>
-      <span class="pill"><b>Stakeholders</b>Gallery, Exhibiting Artist</span>
-      <span class="pill"><b>Collaborators</b>Alvin Ailey Professional Dancer</span>
-    </div>
-    <div class="body2">
-      <div class="txt">
-        <div class="sb"><div class="sl">Concept</div><p>I pitched Lyle Gallery a live movement performance concept meant to engage visual artists, dancers, and audiences in a nontraditional performance experience that shifted how patrons and viewers engage with performance and art in commercial spaces. Blending the barriers between the dance and art worlds and dissolving hierarchies in both.</p></div>
-        <div class="sb"><div class="sl">Craft</div><p>Casting the right dancer for sculptural paper garments, made by Karina Sharif, that are known to constrain movement. Then directing choreography in close collaboration with the gallery and artist so the performance honored the work rather than upstaging it. Featuring a renowned professional dancer from Alvin Ailey American Dance Theater wearing the sculptural work: Karina Sharif's wearable sculptures become the garment; the garment becomes choreography.</p></div>
-        <div class="sb"><div class="sl">Execution</div><p>Inaugural performance delivered at the exhibition opening, featuring a sold out crowd of 100 guests. Collaborated with a videographer and photographer to capture the performance during a private and public showing, archiving the work permanently.</p></div>
-      </div>
-      <div class="side">
-        <div class="media gal" data-images="lyle-performance.mp4|lyle-01.jpg|lyle-02.jpg" data-caps="Performance footage|Opening night|The sculptural garment"><video class="auto" src="lyle-performance.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Performance footage</div></div>
-        <p class="tapnote grow0">Click to watch the performance and browse stills, right here in the deck.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE 08 GLOSSIER -->
-<section class="slide" id="c08">
-  <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 08</span><span class="industry">Beauty &amp; Wellness</span></div>
-    <h2 class="big">Glossier</h2>
-    <p class="kicker">Retail as brand theater: pop-ups on two continents.</p>
+    <div class="case-top"><span class="casenum">CASE 07</span><span class="industry">Beauty &amp; Wellness</span></div>
+    <h2 class="big">Glossier &amp; The Consistency Project</h2>
+    <p class="kicker">Retail as brand theater: pop-ups on two continents, and a zero-waste store you could stand inside.</p>
     <div class="pills">
       <span class="pill"><b>My role</b>Product &amp; Brand Education</span>
       <span class="pill"><b>Stakeholders</b>Founders, C Suite</span>
@@ -650,7 +638,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="sb"><div class="sl">Execution</div><p>Engaged deeply with regional staff and customers, both new to Glossier's product suite. 7 day pop ups drove strategy to quickly establish trust with the consumer base and build brand affinity in preparation for key e-commerce expansion into London and Toronto two months later.</p></div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="glossier-01.jpg|glossier-02.jpg|glossier-03.jpg" data-caps="Glossier pop-up, Toronto|Glossier pop-up, London|Pop-up detail"><img class="auto" src="glossier-01.jpg" onerror="this.remove()" alt=""><div class="ph">Pop-up photos</div></div>
+        <div class="media gal" data-images="glossier-01.jpg|glossier-02.jpg|glossier-03.jpg|tcp-01.jpg|tcp-02.jpg|tcp-03.jpg" data-caps="Glossier pop-up|Glossier pop-up|Pop-up detail|The Consistency Project|The Consistency Project|Store detail"><img class="auto" src="glossier-01.jpg" onerror="this.remove()" alt=""><div class="ph">Pop-up photos</div></div>
         <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
       </div>
     </div>
@@ -664,16 +652,16 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <h2>Cultural Fluency</h2>
     <p class="sub">In conversation with regional subcultures, collective memory, and consumer behavior. How I maintain an ear to the ground that feels reflective and grounded.</p>
     <div class="prev">
-      <button class="pcard" data-target="m09"><span class="cover"><img class="auto" src="cover-moment-09.jpg" onerror="this.remove()" alt="">MOMENT 09 COVER IMAGE</span><span class="ptxt"><span class="n">09</span><b>Multicultural Marketing at PRH</b></span></button>
-      <button class="pcard" data-target="m10"><span class="cover"><img class="auto" src="cover-moment-10.jpg" onerror="this.remove()" alt="">MOMENT 10 COVER IMAGE</span><span class="ptxt"><span class="n">10</span><b>Bad Bunny: Movement As Story</b></span></button>
+      <button class="pcard" data-target="m08"><span class="cover"><img class="auto" src="cover-moment-08.jpg" onerror="this.remove()" alt="">MOMENT 08 COVER IMAGE</span><span class="ptxt"><span class="n">08</span><b>Multicultural Marketing at PRH</b></span></button>
+      <button class="pcard" data-target="m09"><span class="cover"><img class="auto" src="cover-moment-09.jpg" onerror="this.remove()" alt="">MOMENT 09 COVER IMAGE</span><span class="ptxt"><span class="n">09</span><b>Bad Bunny: Movement As Story</b></span></button>
     </div>
   </div>
 </section>
 
-<!-- MOMENT 09 PRH -->
-<section class="slide" id="m09">
+<!-- MOMENT 08 PRH -->
+<section class="slide" id="m08">
   <div class="inner">
-    <div class="case-top"><span class="casenum">MOMENT 09</span><span class="industry">Publishing</span></div>
+    <div class="case-top"><span class="casenum">MOMENT 08</span><span class="industry">Publishing</span></div>
     <h2 class="big">Multicultural Marketing at PRH</h2>
     <p class="kicker">Audience research that changed how a legacy publisher saw its readers, and the creative brief that proved the method.</p>
     <div class="pills">
@@ -694,10 +682,10 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
   </div>
 </section>
 
-<!-- MOMENT 10 BAD BUNNY -->
-<section class="slide" id="m10">
+<!-- MOMENT 09 BAD BUNNY -->
+<section class="slide" id="m09">
   <div class="inner">
-    <div class="case-top"><span class="casenum">MOMENT 10</span><span class="industry">Creator</span></div>
+    <div class="case-top"><span class="casenum">MOMENT 09</span><span class="industry">Creator</span></div>
     <h2 class="big">Bad Bunny: Movement As Story</h2>
     <p class="kicker">Movement direction analysis on camera, meeting a cultural moment (Super Bowl 2026) in real time.</p>
     <div class="pills">
@@ -734,17 +722,16 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <h2>Creator Economy &amp; Partnerships</h2>
     <p class="sub">Talent, brand, and thought leadership from every side of the table.</p>
     <div class="prev">
-      <button class="pcard" data-target="m11"><span class="cover"><img class="auto" src="cover-moment-11.jpg" onerror="this.remove()" alt="">MOMENT 11 COVER IMAGE</span><span class="ptxt"><span class="n">11</span><b>In Front of the Camera</b></span></button>
-      <button class="pcard" data-target="m12"><span class="cover"><img class="auto" src="cover-moment-12.jpg" onerror="this.remove()" alt="">MOMENT 12 COVER IMAGE</span><span class="ptxt"><span class="n">12</span><b>Building the Partnership</b></span></button>
-      <button class="pcard" data-target="m13"><span class="cover"><img class="auto" src="cover-moment-13.jpg" onerror="this.remove()" alt="">MOMENT 13 COVER IMAGE</span><span class="ptxt"><span class="n">13</span><b>Thought Leadership</b></span></button>
+      <button class="pcard" data-target="m10"><span class="cover"><img class="auto" src="cover-moment-10.jpg" onerror="this.remove()" alt="">MOMENT 10 COVER IMAGE</span><span class="ptxt"><span class="n">10</span><b>In Front of the Camera</b></span></button>
+      <button class="pcard" data-target="m11"><span class="cover"><img class="auto" src="cover-moment-11.jpg" onerror="this.remove()" alt="">MOMENT 11 COVER IMAGE</span><span class="ptxt"><span class="n">11</span><b>Thought Leadership</b></span></button>
     </div>
   </div>
 </section>
 
-<!-- MOMENT 11 IN FRONT OF THE CAMERA -->
-<section class="slide" id="m11">
+<!-- MOMENT 10 IN FRONT OF THE CAMERA -->
+<section class="slide" id="m10">
   <div class="inner">
-    <div class="case-top"><span class="casenum">MOMENT 11</span><span class="industry">Talent</span></div>
+    <div class="case-top"><span class="casenum">MOMENT 10</span><span class="industry">Talent</span></div>
     <h2 class="big">In Front of the Camera</h2>
     <p class="kicker">Movement-guided, social-first campaigns for CUUP and Club Monaco.</p>
     <div class="pills">
@@ -772,36 +759,11 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
   </div>
 </section>
 
-<!-- MOMENT 12 BUILDING THE PARTNERSHIP -->
-<section class="slide" id="m12">
-  <div class="inner">
-    <div class="case-top"><span class="casenum">MOMENT 12</span><span class="industry">Brand</span></div>
-    <h2 class="big">Building the Partnership</h2>
-    <p class="kicker">Influencer programs and institutional partnerships that produced revenue, not just reach.</p>
-    <div class="pills">
-      <span class="pill"><b>Role</b>Partnership &amp; Brand Lead</span>
-    </div>
-    <div class="body2">
-      <div class="txt">
-        <div class="sb"><div class="sl">Concept &amp; Craft</div><p>At Chillhouse, influencer partnerships and brand activations drove 35% membership growth in five weeks. At Working Families, I secured institutional partnerships with the NBA Players Association, Black Voters Matter, and Black Futures Lab, unlocking $250K in new operating revenue.</p></div>
-        <div class="sb"><div class="sl">Execution</div><p>Both sides of the partnership equation: creative programs that give a partner a reason to say yes, and ongoing relationship management that turned initial partnerships into ongoing revenue streams.</p></div>
-        <div class="stats">
-          <div class="stat"><b>+35%</b><span>membership in five weeks</span></div>
-          <div class="stat"><b>$250K</b><span>new operating revenue unlocked</span></div>
-        </div>
-      </div>
-      <div class="side">
-        <div class="media gal" data-images="partnerships-01.jpg|partnerships-02.jpg|partnerships-03.jpg" data-caps="Partnership moment|Partnership moment|Partnership moment"><img class="auto" src="partnerships-01.jpg" onerror="this.remove()" alt=""><div class="ph">Partnership photos</div></div>
-        <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- MOMENT 13 THOUGHT LEADERSHIP -->
-<section class="slide" id="m13">
+<!-- MOMENT 11 THOUGHT LEADERSHIP -->
+<section class="slide" id="m11">
   <div class="inner">
-    <div class="case-top"><span class="casenum">MOMENT 13</span><span class="industry">Creator / Talent</span></div>
+    <div class="case-top"><span class="casenum">MOMENT 11</span><span class="industry">Creator / Talent</span></div>
     <h2 class="big">Thought Leadership</h2>
     <p class="kicker">Paid speaking engagements where brands leveraged my voice to connect with their desired audiences. Hosted in collaboration with my platform, Allies Doing Work.</p>
     <div class="pills">
@@ -846,20 +808,19 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <div class="rn">V</div>
     <h2>Social, Growth &amp; Performance</h2>
     <p class="sub">Creative vision that understands marketing and digital performance channels: social, email, text, editorial, and paid social.</p>
-    <div class="prev">
-      <button class="pcard" data-target="c14"><span class="cover"><img class="auto" src="cover-case-14.jpg" onerror="this.remove()" alt="">CASE 14 COVER IMAGE</span><span class="ptxt"><span class="n">14</span><b>Chillhouse</b></span></button>
-      <button class="pcard" data-target="c15"><span class="cover"><img class="auto" src="cover-case-15.jpg" onerror="this.remove()" alt="">CASE 15 COVER IMAGE</span><span class="ptxt"><span class="n">15</span><b>Living Cities</b></span></button>
-      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-case-16.jpg" onerror="this.remove()" alt="">CASE 16 COVER IMAGE</span><span class="ptxt"><span class="n">16</span><b>The Newsletter, Two Ways</b></span></button>
-      <button class="pcard" data-target="c17"><span class="cover"><img class="auto" src="cover-case-17.jpg" onerror="this.remove()" alt="">CASE 17 COVER IMAGE</span><span class="ptxt"><span class="n">17</span><b>Allies Doing Work</b></span></button>
-      <button class="pcard" data-target="c18"><span class="cover"><img class="auto" src="cover-case-18.jpg" onerror="this.remove()" alt="">CASE 18 COVER IMAGE</span><span class="ptxt"><span class="n">18</span><b>Wear One's At</b></span></button>
+    <div class="prev quad">
+      <button class="pcard" data-target="c12"><span class="cover"><img class="auto" src="cover-case-12.jpg" onerror="this.remove()" alt="">CASE 12 COVER IMAGE</span><span class="ptxt"><span class="n">12</span><b>Chillhouse</b></span></button>
+      <button class="pcard" data-target="c13"><span class="cover"><img class="auto" src="cover-case-13.jpg" onerror="this.remove()" alt="">CASE 13 COVER IMAGE</span><span class="ptxt"><span class="n">13</span><b>Living Cities</b></span></button>
+      <button class="pcard" data-target="c14"><span class="cover"><img class="auto" src="cover-case-14.jpg" onerror="this.remove()" alt="">CASE 14 COVER IMAGE</span><span class="ptxt"><span class="n">14</span><b>Allies Doing Work</b></span></button>
+      <button class="pcard" data-target="c15"><span class="cover"><img class="auto" src="cover-case-15.jpg" onerror="this.remove()" alt="">CASE 15 COVER IMAGE</span><span class="ptxt"><span class="n">15</span><b>Wear One's At</b></span></button>
     </div>
   </div>
 </section>
 
-<!-- CASE 14 CHILLHOUSE (SOCIAL) -->
-<section class="slide" id="c14">
+<!-- CASE 12 CHILLHOUSE (SOCIAL) -->
+<section class="slide" id="c12">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 14</span><span class="industry">Beauty &amp; Wellness</span></div>
+    <div class="case-top"><span class="casenum">CASE 12</span><span class="industry">Beauty &amp; Wellness</span></div>
     <h2 class="big">Chillhouse</h2>
     <p class="kicker">In-house content across social, experiential, and digital during a startup's fastest growth year.</p>
     <div class="pills">
@@ -886,10 +847,10 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
   </div>
 </section>
 
-<!-- CASE 15 LIVING CITIES -->
-<section class="slide" id="c15">
+<!-- CASE 13 LIVING CITIES -->
+<section class="slide" id="c13">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 15</span><span class="industry">Nonprofit &amp; Civic</span></div>
+    <div class="case-top"><span class="casenum">CASE 13</span><span class="industry">Nonprofit &amp; Civic</span></div>
     <h2 class="big">Living Cities</h2>
     <p class="kicker">A video-first social strategy, built to engage regional audiences in the US across LinkedIn, Facebook, Instagram, and YouTube.</p>
     <div class="pills">
@@ -926,49 +887,11 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
   </div>
 </section>
 
-<!-- CASE 16 NEWSLETTERS -->
-<section class="slide" id="c16">
-  <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 16</span><span class="industry">Endeavor / WFO</span></div>
-    <h2 class="big">The Newsletter, Two Ways</h2>
-    <p class="kicker">Design, content strategy, and audience segmentation across two organizations and three platforms: Mailchimp, HubSpot, and Slack.</p>
-    <div class="pills">
-      <span class="pill"><b>My role</b>Art &amp; Creative Direction, Copywriting, Audience Segmentation</span>
-      <span class="pill"><b>Platforms</b>Mailchimp, HubSpot, Slack</span>
-      <span class="pill"><b>Organizations</b>Endeavor, Working Families Organization</span>
-    </div>
-    <div class="body2">
-      <div class="txt">
-        <div class="sb"><div class="sl">Concept</div><p>Segmentation before design. Every newsletter began with who is actually reading and what they need: staff across 42 offices and time zones at Endeavor, and members and donors at WFO.</p></div>
-        <div class="sb"><div class="sl">Craft</div><p>Design and editorial systems tuned per platform: at Endeavor a rebuild native to where staff already live on Slack, with a HubSpot migration that doubled as a Slack adoption lever; at WFO data-informed storytelling that carried campaigns and fundraising, targeted lapsed monthly donors, and converted one time givers into recurring members.</p></div>
-        <div class="sb"><div class="sl">Execution</div><p>Two organizations, two audiences, and the open rates to show the segmentation worked. Click any issue on the right to read it in full without leaving this page.</p></div>
-        <div class="stats">
-          <div class="stat"><b>60%</b><span>open rate at Endeavor within 3 months</span></div>
-          <div class="stat"><b>900%</b><span>campaign open-rate lift at WFO</span></div>
-        </div>
-      </div>
-      <div class="side">
-        <div class="pdfcard grow0" data-pdf="June_2026_Staff_Newsletter.pdf" role="button" tabindex="0">
-          <span class="lt">PDF 01</span><b>The Endeavor Newsletter</b>
-          <span class="d">Global staff, segmented by region and role.</span>
-          <span class="go">Read the June 2026 issue here &rarr;</span><br>
-          <span class="alt" data-pdf="May_Staff_Newsletter.pdf">or the May 2026 issue</span>
-        </div>
-        <div class="pdfcard grow0" data-pdf="Monthly_Sustainer_Giving_Tuesday_2022.pdf" role="button" tabindex="0">
-          <span class="lt">PDF 02</span><b>The WFO Campaign Email</b>
-          <span class="d">Members and donors, story-led. Giving Tuesday.</span>
-          <span class="go">Read the full email here &rarr;</span>
-        </div>
-        <p class="tapnote grow0">Each issue opens right here in the deck. Close with the X to keep reading.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- CASE 17 ALLIES DOING WORK -->
-<section class="slide" id="c17">
+<!-- CASE 14 ALLIES DOING WORK -->
+<section class="slide" id="c14">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 17</span><span class="industry">Community / Creator</span></div>
+    <div class="case-top"><span class="casenum">CASE 14</span><span class="industry">Community / Creator</span></div>
     <h2 class="big">Allies Doing Work</h2>
     <p class="kicker">An organic community built from zero: a community learning platform born in May 2020.</p>
     <div class="pills">
@@ -1000,10 +923,10 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
   </div>
 </section>
 
-<!-- CASE 18 WEAR ONE'S AT -->
-<section class="slide" id="c18">
+<!-- CASE 15 WEAR ONE'S AT -->
+<section class="slide" id="c15">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 18</span><span class="industry">Editorial &amp; Fashion</span></div>
+    <div class="case-top"><span class="casenum">CASE 15</span><span class="industry">Editorial &amp; Fashion</span></div>
     <h2 class="big">Wear One's At</h2>
     <p class="kicker">Naming, designing, and writing a brand's editorial arm, integrated into e-commerce. Client work, 2023.</p>
     <div class="pills">
@@ -1043,17 +966,17 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <h2>Building Creative Teams</h2>
     <p class="sub">How I hire and scale a creative team: foundational hires and a trusted network of freelancers &amp; agencies.</p>
     <div class="prev">
-      <button class="pcard" data-target="c19"><span class="cover"><img class="auto" src="cover-phase-01.jpg" onerror="this.remove()" alt="">PHASE 01 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 01</span><b>The Foundational Hire</b></span></button>
-      <button class="pcard" data-target="c19"><span class="cover"><img class="auto" src="cover-phase-02.jpg" onerror="this.remove()" alt="">PHASE 02 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 02</span><b>Agencies &amp; Freelancers</b></span></button>
-      <button class="pcard" data-target="c19"><span class="cover"><img class="auto" src="cover-phase-03.jpg" onerror="this.remove()" alt="">PHASE 03 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 03</span><b>Systems That Scale Culture</b></span></button>
+      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-phase-01.jpg" onerror="this.remove()" alt="">PHASE 01 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 01</span><b>The Foundational Hire</b></span></button>
+      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-phase-02.jpg" onerror="this.remove()" alt="">PHASE 02 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 02</span><b>Agencies &amp; Freelancers</b></span></button>
+      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-phase-03.jpg" onerror="this.remove()" alt="">PHASE 03 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 03</span><b>Systems That Scale Culture</b></span></button>
     </div>
   </div>
 </section>
 
-<!-- CASE 19 SCALING CREATIVE TEAMS -->
-<section class="slide" id="c19">
+<!-- CASE 16 SCALING CREATIVE TEAMS -->
+<section class="slide" id="c16">
   <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 19</span><span class="industry">WFO / Endeavor</span></div>
+    <div class="case-top"><span class="casenum">CASE 16</span><span class="industry">WFO / Endeavor</span></div>
     <h2 class="big">Scaling Creative Teams</h2>
     <p class="kicker">Hiring people who are brilliant at their craft and building the conditions for their best work.</p>
     <div class="pills">
