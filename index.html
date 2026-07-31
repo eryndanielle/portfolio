@@ -29,11 +29,21 @@ VIDEO EMBEDS (YouTube/Vimeo): on any .media slot, remove the "gal"
   class and paste the platform's <iframe> embed code inside the div.
 HEADSHOTS: the cover and the final slide each have a slot that says
   "Headshot". Replace that word with <img src="eryn-headshot.jpg">.
-GROWING A GALLERY WITHOUT EDITING CODE: keep numbering files in
-  sequence (wartime-04.jpg, wartime-05.jpg, ...; videos too, e.g.
-  wartime-06.mp4). The viewer detects them automatically once the site
-  is hosted. The data-images list only needs the first few; captions
-  (data-caps) are no longer displayed anywhere, so they're optional.
+ADD OR REMOVE GALLERY ITEMS FREELY (no fixed count):
+  Every photo gallery auto-detects sequentially numbered files, so a
+  gallery can hold as many or as few items as you want.
+  TO ADD: drop the next-numbered file into the folder and re-upload.
+    e.g. a gallery ending at wartime-03.jpg will pick up wartime-04.jpg,
+    wartime-05.jpg, and so on, with no code change. Videos count too
+    (wartime-06.mp4). The viewer probes forward until a number is
+    missing, so keep the sequence unbroken (no gaps like skipping -04).
+  TO REMOVE: delete that file from the folder (or, to remove one that's
+    named directly in a data-images list, delete its name from the list).
+    Deleting the highest-numbered file shrinks the gallery by one.
+  NOTE: auto-detection runs on the HOSTED site (GitHub Pages), not when
+    you open the HTML from your desktop, so judge counts on the live URL.
+  The data-images list only needs the first item to seed the sequence;
+  captions (data-caps) are not displayed, so they are optional.
 IMAGE FIT: divider cover cards are a fixed 2:1 frame, filled edge to
   edge and cropped evenly from the CENTER; export covers near 2:1
   (e.g. 1600x800) to minimize cropping. Case-slide side media boxes
@@ -191,6 +201,19 @@ button.pcard:hover .cover{border-color:var(--red)}
 .sb p + p{margin-top:8px}
 .side{display:flex;flex-direction:column;gap:8px;min-width:0}
 .side .media{flex:0 0 auto;aspect-ratio:3/2;min-height:0}
+.webrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.webrow.two{grid-template-columns:repeat(2,1fr)}
+.side .webrow.two{gap:10px;margin-top:0}
+.webcard.sm .wc-media{aspect-ratio:16/11}
+.webcard.sm .wc-tag{display:none}
+.webcard.sm .wc-name{font-size:.82rem;margin-top:6px}
+@media(max-width:760px){.webrow{grid-template-columns:1fr}}
+.webcard{display:block;text-decoration:none;color:var(--egg);cursor:pointer}
+.webcard .wc-media{position:relative;display:block;aspect-ratio:16/10;background:var(--wash);border-radius:var(--r-md);overflow:hidden;border:1.3px solid transparent;transition:border-color .18s,transform .18s}
+.webcard:hover .wc-media{border-color:var(--red);transform:translateY(-2px)}
+.webcard .wc-media video{width:100%;height:100%;object-fit:cover;display:block}
+.webcard .wc-tag{display:inline-block;font-weight:700;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);margin:10px 0 2px}
+.webcard .wc-name{display:block;font-weight:700;font-size:.98rem;color:var(--egg)}
 .side .media.embed{aspect-ratio:16/9;background:#000}
 .media.embed iframe{width:100%;height:100%;border:0;display:block}
 .side .media.ytlink{position:relative;display:block;aspect-ratio:16/9;flex:0 0 auto;border-radius:var(--r-md);overflow:hidden;text-decoration:none}
@@ -386,7 +409,6 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
       <button class="jump" data-target="s3"><span class="rn">III</span><b>Cultural Fluency</b><span>2 moments</span></button>
       <button class="jump" data-target="s4"><span class="rn">IV</span><b>Creator Economy &amp; Partnerships</b><span>2 moments</span></button>
       <button class="jump" data-target="s5"><span class="rn">V</span><b>Social, Growth &amp; Performance</b><span>4 cases</span></button>
-      <button class="jump" data-target="s6"><span class="rn">VI</span><b>Building Creative Teams</b><span>the playbook</span></button>
     </div>
   </div>
 </section>
@@ -471,7 +493,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
 <!-- CASE 02 WARTIME -->
 <section class="slide" id="c02">
   <div class="inner">
-    <div class="case-top"><span class="cSE 02</span><span class="industry">Nonprofit &amp; Civic</span></div>
+    <div class="case-top"><span class="casenum">CASE 02</span><span class="industry">Nonprofit &amp; Civic</span></div>
     <h2 class="big">Wartime</h2>
     <p class="kicker">An award-winning cultural publication, directed from blank page to 50,000 copies.</p>
     <div class="pills">
@@ -501,28 +523,43 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
 <section class="slide" id="c03">
   <div class="inner">
     <div class="case-top"><span class="casenum">CASE 03</span><span class="industry">Nonprofit &amp; Civic</span></div>
-    <h2 class="big">Web Redesign &amp; Development</h2>
-    <p class="kicker">A digital front door rebuilt in three months, directed in partnership with an external design agency.</p>
+    <h2 class="big">Web Design</h2>
+    <p class="kicker">Digital front doors, directed end to end. A flagship rebuild for Black Men Build, plus web design for two additional clients built with the same approach.</p>
     <div class="pills">
       <span class="pill"><b>My role</b>Creative &amp; Art Direction, Copywriting, Research, Creative Producer, Project Lead</span>
-      <span class="pill"><b>Stakeholders</b>Executive Leadership</span>
-      <span class="pill"><b>Collaborators</b>External Design Agency (Web Developer, Graphic Designer)</span>
+      <span class="pill"><b>Stakeholders</b>Executive Leadership, Founders</span>
+      <span class="pill"><b>Collaborators</b>Web Developers, Graphic Designers, Design Agency</span>
     </div>
     <div class="body2">
       <div class="txt">
-        <div class="sb"><div class="sl">Concept</div><p>The website redesign had a central goal to convert belief into action: membership, donations, volunteering. I led the brief, built the reference set, and directed the team of web developer and graphic designers toward a full-bleed typographic identity that carries the organization's energy to our primary digital touchpoint.</p></div>
+        <div class="sb"><div class="sl">Concept</div><p>The Black Men Build redesign had a central goal to convert belief into action: membership, donations, volunteering. I led the brief, built the reference set, and directed the team of web developer and graphic designers toward a full-bleed typographic identity that carries the organization's energy to its primary digital touchpoint.</p></div>
         <div class="sb"><div class="sl">Craft</div><p>WordPress build with custom blog features including highlight-to-share social integration, EveryAction database integration, and custom CSS action forms designed to make joining and giving feel seamless rather than transactional, while maintaining visual brand identity.</p></div>
         <div class="sb"><div class="sl">Execution</div><p>Delivered in 3 months on a $25K budget, improving donor retention by 30% in the first 30 days. The site became the foundational block for the digital ecosystem highlighted in Section V.</p></div>
+        <div class="stats">
+          <div class="stat"><b>3 mo</b><span>concept to launch</span></div>
+          <div class="stat"><b>+30%</b><span>donor retention</span></div>
+          <div class="stat"><b>$25K</b><span>budget, design + revisions</span></div>
+        </div>
+        <div class="sb" style="margin-top:16px"><div class="sl">Additional Clients</div><p>The same approach, brief to build, carried into web design for The Consistency Project and Shmood Agency.</p></div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="web-01.mp4|web-02.jpg|web-03.jpg" data-caps="Site walkthrough|Action forms|Blog system"><video class="auto" src="web-01.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Site screens, before / after</div></div>
-        <p class="tapnote grow0">Click to open and browse the full set of screens, right here in the deck.</p>
+        <a class="webcard" role="button" tabindex="0" data-video="web-bmb.mp4">
+          <span class="wc-media"><video class="auto" src="web-bmb.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
+          <span class="wc-tag">Nonprofit &amp; Civic</span>
+          <span class="wc-name">Black Men Build</span>
+        </a>
+        <div class="webrow two" style="margin-top:4px">
+          <a class="webcard sm" role="button" tabindex="0" data-video="web-tcp.mp4">
+            <span class="wc-media"><video class="auto" src="web-tcp.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
+            <span class="wc-name">The Consistency Project</span>
+          </a>
+          <a class="webcard sm" role="button" tabindex="0" data-video="web-shmood.mp4">
+            <span class="wc-media"><video class="auto" src="web-shmood.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
+            <span class="wc-name">Shmood Agency</span>
+          </a>
+        </div>
+        <p class="tapnote grow0">Click any site to play its walkthrough, right here in the deck.</p>
       </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>3 mo</b><span>concept to launch</span></div>
-      <div class="stat"><b>+30%</b><span>donor retention</span></div>
-      <div class="stat"><b>$25K</b><span>budget, fully managed</span></div>
     </div>
   </div>
 </section>
@@ -959,48 +996,6 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
   </div>
 </section>
 
-<!-- ================= DIVIDER VI: BUILDING CREATIVE TEAMS ================= -->
-<section class="slide divider" id="s6">
-  <div class="inner">
-    <div class="rn">VI</div>
-    <h2>Building Creative Teams</h2>
-    <p class="sub">How I hire and scale a creative team: foundational hires and a trusted network of freelancers &amp; agencies.</p>
-    <div class="prev">
-      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-phase-01.jpg" onerror="this.remove()" alt="">PHASE 01 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 01</span><b>The Foundational Hire</b></span></button>
-      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-phase-02.jpg" onerror="this.remove()" alt="">PHASE 02 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 02</span><b>Agencies &amp; Freelancers</b></span></button>
-      <button class="pcard" data-target="c16"><span class="cover"><img class="auto" src="cover-phase-03.jpg" onerror="this.remove()" alt="">PHASE 03 COVER IMAGE</span><span class="ptxt"><span class="n">Phase 03</span><b>Systems That Scale Culture</b></span></button>
-    </div>
-  </div>
-</section>
-
-<!-- CASE 16 SCALING CREATIVE TEAMS -->
-<section class="slide" id="c16">
-  <div class="inner">
-    <div class="case-top"><span class="casenum">CASE 16</span><span class="industry">WFO / Endeavor</span></div>
-    <h2 class="big">Scaling Creative Teams</h2>
-    <p class="kicker">Hiring people who are brilliant at their craft and building the conditions for their best work.</p>
-    <div class="pills">
-      <span class="pill"><b>My role</b>Director of Creative Operations</span>
-      <span class="pill"><b>Stakeholders</b>Executive Leadership, Finance, People</span>
-    </div>
-    <div class="body2">
-      <div class="txt">
-        <div class="sb"><div class="sl">Phase 01, The Foundational Hire</div><p>Years in social made me adept at seeing gaps in creative teams, so the first key hire for the team at WFO was a video-savvy social producer and content strategist: someone to protect the growth channels and give me the space to take on the larger strategic projects the creative team needed.</p></div>
-        <div class="sb"><div class="sl">Phase 02, Agencies &amp; Freelancers</div><p>For specialized projects and campaigns, I built deep working relationships with our creative agency and my network of freelancers to support web design, illustration, motion, and experiential production. Those relationships powered the print publication, the website redesign, documentary production, and the social asset system.</p></div>
-        <div class="sb"><div class="sl">Phase 03, Systems That Scale Culture</div><p>Onboarding documents, workflows, and structures that let teams grow without the culture thinning. At Endeavor I rebuilt the Global Onboarding Program through a two-month immersion in Brazil, developing 30-60-90-day frameworks, manager training, and best-practice guides. I systematically know how to hire and build teams while protecting institutional knowledge.</p></div>
-      </div>
-      <div class="side">
-        <div class="media gal" data-images="team-01.jpg|team-02.jpg|team-03.jpg" data-caps="The team|The systems|The work"><img class="auto" src="team-01.jpg" onerror="this.remove()" alt=""><div class="ph">The team, the systems, the work</div></div>
-        <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>200%</b><span>function scaled on a $200K budget</span></div>
-      <div class="stat"><b>3</b><span>political cycles delivered without breaking</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= CONTACT ================= -->
 <section class="slide tall finale">
   <div class="inner">
@@ -1133,6 +1128,9 @@ document.querySelectorAll('.media.gal').forEach(m=>{
     const caps=(m.dataset.caps||'').split('|');
     openGal(srcs.map((s,i)=>({src:s.trim(),cap:(caps[i]||'').trim()})),0);
   });
+});
+document.querySelectorAll('[data-video]').forEach(c=>{
+  c.addEventListener('click',()=>openGal([{src:c.dataset.video,cap:''}],0));
 });
 document.getElementById('galprev').addEventListener('click',()=>galShow(galIdx-1));
 document.getElementById('galnext').addEventListener('click',()=>galShow(galIdx+1));
