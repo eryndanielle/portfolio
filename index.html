@@ -226,6 +226,7 @@ button.pcard:hover .cover{border-color:var(--red)}
 
 /* ---------- media ---------- */
 .media img.auto,.media video.auto,.cover img.auto,.headshot img.auto,.pscreen img.auto{position:absolute;inset:0;width:100%;height:100%;z-index:1;object-fit:cover;object-position:center center}
+video.auto{background:var(--wash)}
 .cover,.headshot,.pscreen{position:relative}
 .media{position:relative;background:var(--wash);border-radius:var(--r-md);overflow:hidden;display:flex;align-items:center;justify-content:center}
 .media.gal{cursor:pointer;border:1.3px solid transparent;transition:border-color .18s}
@@ -544,17 +545,17 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
       </div>
       <div class="side">
         <a class="webcard" role="button" tabindex="0" data-video="web-bmb.mp4">
-          <span class="wc-media"><video class="auto" src="web-bmb.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
+          <span class="wc-media"><video class="auto" src="web-bmb.mp4" poster="web-bmb-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
           <span class="wc-tag">Nonprofit &amp; Civic</span>
           <span class="wc-name">Black Men Build</span>
         </a>
         <div class="webrow two" style="margin-top:4px">
           <a class="webcard sm" role="button" tabindex="0" data-video="web-tcp.mp4">
-            <span class="wc-media"><video class="auto" src="web-tcp.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
+            <span class="wc-media"><video class="auto" src="web-tcp.mp4" poster="web-tcp-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
             <span class="wc-name">The Consistency Project</span>
           </a>
           <a class="webcard sm" role="button" tabindex="0" data-video="web-shmood.mp4">
-            <span class="wc-media"><video class="auto" src="web-shmood.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
+            <span class="wc-media"><video class="auto" src="web-shmood.mp4" poster="web-shmood-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
             <span class="wc-name">Shmood Agency</span>
           </a>
         </div>
@@ -627,7 +628,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="sb"><div class="sl">Execution</div><p>Inaugural performance delivered at the exhibition opening, featuring a sold out crowd of 100 guests. Collaborated with a videographer and photographer to capture the performance during a private and public showing, archiving the work permanently.</p></div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="lyle-performance.mp4|lyle-01.jpg|lyle-02.jpg" data-caps="Performance footage|Opening night|The sculptural garment"><video class="auto" src="lyle-performance.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Performance footage</div></div>
+        <div class="media gal" data-images="lyle-performance.mp4|lyle-01.jpg|lyle-02.jpg" data-caps="Performance footage|Opening night|The sculptural garment"><video class="auto" src="lyle-performance.mp4" poster="lyle-performance-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Performance footage</div></div>
         <p class="tapnote grow0">Click to watch the performance and browse stills, right here in the deck.</p>
       </div>
     </div>
@@ -786,7 +787,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
             <div class="pcap"><b>CUUP</b><br>See it on Instagram.</div>
           </a>
           <a class="phone" role="button" tabindex="0" data-video="clubmonaco.mp4">
-            <div class="pframe"><div class="pnotch"></div><div class="pscreen"><video class="auto" src="clubmonaco.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Club Monaco</div></div></div>
+            <div class="pframe"><div class="pnotch"></div><div class="pscreen"><img class="auto" src="phone-clubmonaco.jpg" onerror="this.remove()" alt=""><div class="ph">Club Monaco</div></div></div>
             <div class="pcap"><b>Club Monaco</b><br>Play the campaign here.</div>
           </a>
         </div>
@@ -832,7 +833,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         </div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="speaking-video.mp4" data-caps="On stage"><video class="auto" src="speaking-video.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Speaking engagement film</div></div>
+        <div class="media gal" data-images="speaking-video.mp4" data-caps="On stage"><video class="auto" src="speaking-video.mp4" poster="speaking-video-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Speaking engagement film</div></div>
         <p class="tapnote grow0">Click to watch, right here in the deck.</p>
       </div>
     </div>
@@ -872,7 +873,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="sb"><div class="sl">Execution</div><p>The numbers held up across the funnel, from reach to paying membership in our stores, with key editorial partnerships (Man Repeller, Coveteur) in the brand's breakout year.</p></div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="chillhouse-social.mp4|chillhouse-social-01.jpg|chillhouse-social-02.jpg|chillhouse-social-03.jpg" data-caps="Campaign film|The grid|Campaign visual|Campaign visual"><video class="auto" src="chillhouse-social.mp4" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Campaign film + visuals</div></div>
+        <div class="media gal" data-images="chillhouse-social.mp4|chillhouse-social-01.jpg|chillhouse-social-02.jpg|chillhouse-social-03.jpg" data-caps="Campaign film|The grid|Campaign visual|Campaign visual"><video class="auto" src="chillhouse-social.mp4" poster="chillhouse-social-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Campaign film + visuals</div></div>
         <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
       </div>
     </div>
@@ -902,17 +903,17 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="sb"><div class="sl">Execution</div><p>One quarter in, the system was measurably compounding, and the 90-day review proved every pillar was pulling. Two of the films are linked on the right.</p></div>
       </div>
       <div class="side">
-        <a class="linkcard grow0" href="REPLACE-YOUTUBE-OR-INSTAGRAM-URL" target="_blank" rel="noopener">
-          <span class="lt">Video 01</span><b>Live With Living Cities</b>
-          <span class="d">Podcast promo and host-to-camera thought leadership.</span>
-          <span class="go">Watch &rarr;</span>
-        </a>
-        <a class="linkcard grow0" href="REPLACE-YOUTUBE-OR-INSTAGRAM-URL" target="_blank" rel="noopener">
-          <span class="lt">Video 02</span><b>The Historical Narrative</b>
-          <span class="d">A staff op-ed turned into a narrative film.</span>
-          <span class="go">Watch &rarr;</span>
-        </a>
-        <p class="tapnote grow0">These open on Instagram or YouTube.</p>
+        <div class="phones grow0">
+          <a class="phone" href="REPLACE-LIVINGCITIES-VIDEO-01-URL" target="_blank" rel="noopener">
+            <div class="pframe"><div class="pnotch"></div><div class="pscreen"><img class="auto" src="phone-livingcities-01.jpg" onerror="this.remove()" alt=""><div class="ph">Live With Living Cities</div></div></div>
+            <div class="pcap"><b>Live With Living Cities</b><br>Podcast promo, host to camera.</div>
+          </a>
+          <a class="phone" href="REPLACE-LIVINGCITIES-VIDEO-02-URL" target="_blank" rel="noopener">
+            <div class="pframe"><div class="pnotch"></div><div class="pscreen"><img class="auto" src="phone-livingcities-02.jpg" onerror="this.remove()" alt=""><div class="ph">Historical Narrative</div></div></div>
+            <div class="pcap"><b>The Historical Narrative</b><br>A staff op-ed as a film.</div>
+          </a>
+        </div>
+        <p class="tapnote grow0">Tap a phone to watch the live content.</p>
       </div>
     </div>
     <div class="stats">
@@ -948,13 +949,8 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         </div>
       </div>
       <div class="side">
-        <div class="phones grow0">
-          <a class="phone" href="https://www.instagram.com/core____memories/" target="_blank" rel="noopener">
-            <div class="pframe"><div class="pnotch"></div><div class="pscreen"><img class="auto" src="phone-corememories.jpg" onerror="this.remove()" alt=""><div class="ph">Feed</div></div></div>
-            <div class="pcap"><b>@core____memories</b><br>Formerly Allies Doing Work.</div>
-          </a>
-        </div>
-        <p class="tapnote grow0">Tap the phone to open the live account (opens Instagram).</p>
+        <div class="media gal" data-images="allies-01.jpg|allies-02.jpg|allies-03.jpg" data-caps="Allies Doing Work|Allies Doing Work|Allies Doing Work"><img class="auto" src="allies-01.jpg" onerror="this.remove()" alt=""><div class="ph">Allies Doing Work</div></div>
+        <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
       </div>
     </div>
   </div>
