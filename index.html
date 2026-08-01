@@ -545,17 +545,17 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="sb" style="margin-top:16px"><div class="sl">Additional Clients</div><p>The same approach, brief to build, carried into web design for The Consistency Project and Shmood Agency.</p></div>
       </div>
       <div class="side">
-        <a class="webcard media gal" role="button" tabindex="0" data-images="web-bmb.mp4|web-bmb-01.jpg|web-bmb-02.jpg|web-bmb-03.jpg" data-caps="Walkthrough|Screen|Screen|Screen">
+        <a class="webcard" role="button" tabindex="0" data-images="web-bmb.mp4|web-bmb-01.jpg|web-bmb-02.jpg|web-bmb-03.jpg" data-caps="Walkthrough|Screen|Screen|Screen">
           <span class="wc-media"><video class="auto" src="web-bmb.mp4" poster="web-bmb-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
           <span class="wc-tag">Nonprofit &amp; Civic</span>
           <span class="wc-name">Black Men Build</span>
         </a>
         <div class="webrow two" style="margin-top:4px">
-          <a class="webcard sm media gal" role="button" tabindex="0" data-images="web-tcp.mp4|web-tcp-01.jpg|web-tcp-02.jpg" data-caps="Walkthrough|Screen|Screen">
+          <a class="webcard sm" role="button" tabindex="0" data-images="web-tcp.mp4|web-tcp-01.jpg|web-tcp-02.jpg" data-caps="Walkthrough|Screen|Screen">
             <span class="wc-media"><video class="auto" src="web-tcp.mp4" poster="web-tcp-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
             <span class="wc-name">The Consistency Project</span>
           </a>
-          <a class="webcard sm media gal" role="button" tabindex="0" data-images="web-shmood.mp4|web-shmood-01.jpg|web-shmood-02.jpg" data-caps="Walkthrough|Screen|Screen">
+          <a class="webcard sm" role="button" tabindex="0" data-images="web-shmood.mp4|web-shmood-01.jpg|web-shmood-02.jpg" data-caps="Walkthrough|Screen|Screen">
             <span class="wc-media"><video class="auto" src="web-shmood.mp4" poster="web-shmood-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video></span>
             <span class="wc-name">Shmood Agency</span>
           </a>
@@ -874,7 +874,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="sb"><div class="sl">Execution</div><p>The numbers held up across the funnel, from reach to paying membership in our stores, with key editorial partnerships (Man Repeller, Coveteur) in the brand's breakout year.</p></div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="chillhouse-social.mp4|chillhouse-social-01.jpg|chillhouse-social-02.jpg|chillhouse-social-03.jpg" data-caps="Campaign film|The grid|Campaign visual|Campaign visual"><video class="auto" src="chillhouse-social.mp4" poster="chillhouse-social-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Campaign film + visuals</div></div>
+        <div class="media gal portrait" data-images="chillhouse-social.mp4|chillhouse-social-01.jpg|chillhouse-social-02.jpg|chillhouse-social-03.jpg" data-caps="Campaign film|The grid|Campaign visual|Campaign visual"><video class="auto" src="chillhouse-social.mp4" poster="chillhouse-social-poster.jpg" muted playsinline preload="metadata" onerror="this.remove()"></video><div class="ph">Campaign film + visuals</div></div>
         <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
       </div>
     </div>
@@ -950,7 +950,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         </div>
       </div>
       <div class="side">
-        <div class="media gal" data-images="allies-01.jpg|allies-02.jpg|allies-03.jpg" data-caps="Allies Doing Work|Allies Doing Work|Allies Doing Work"><img class="auto" src="allies-01.jpg" onerror="this.remove()" alt=""><div class="ph">Allies Doing Work</div></div>
+        <div class="media gal portrait" data-images="allies-01.jpg|allies-02.jpg|allies-03.jpg" data-caps="Allies Doing Work|Allies Doing Work|Allies Doing Work"><img class="auto" src="allies-01.jpg" onerror="this.remove()" alt=""><div class="ph">Allies Doing Work</div></div>
         <p class="tapnote grow0">Click to open and browse the full set, right here in the deck.</p>
       </div>
     </div>
@@ -1076,6 +1076,7 @@ let galSet=[],galIdx=0;
 function isVideo(src){return /\.(mp4|webm|mov)(\?|$)/i.test(src);}
 function dropCurrent(){
   // remove a missing item, then show the next valid one (or close if none left)
+  if(!galbox.classList.contains('open'))return;
   galSet.splice(galIdx,1);
   if(!galSet.length){closeOverlays();return;}
   galShow(galIdx);
@@ -1127,7 +1128,7 @@ function extendSet(){
     })(0);
   })();
 }
-document.querySelectorAll('.media.gal').forEach(m=>{
+document.querySelectorAll('.media.gal,.webcard[data-images]').forEach(m=>{
   m.addEventListener('click',()=>{
     const srcs=(m.dataset.images||'').split('|').filter(Boolean);
     const caps=(m.dataset.caps||'').split('|');
@@ -1143,7 +1144,9 @@ document.getElementById('galnext').addEventListener('click',()=>galShow(galIdx+1
 /* ---------- shared overlay behavior ---------- */
 function closeOverlays(){
   pdfbox.classList.remove('open');galbox.classList.remove('open');
-  pdfframe.src='';galvid.pause();galvid.src='';document.body.style.overflow='';
+  galimg.onerror=null;galvid.onerror=null;
+  pdfframe.src='';galvid.pause();galvid.removeAttribute('src');galvid.load();
+  document.body.style.overflow='';
 }
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeOverlays));
 [pdfbox,galbox].forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOverlays();}));
