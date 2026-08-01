@@ -229,8 +229,9 @@ button.pcard:hover .cover{border-color:var(--red)}
 video.auto{background:var(--wash)}
 .cover,.headshot,.pscreen{position:relative}
 .media{position:relative;background:var(--wash);border-radius:var(--r-md);overflow:hidden;display:flex;align-items:center;justify-content:center}
-.media.gal{cursor:pointer;border:1.3px solid transparent;transition:border-color .18s}
-.media.gal:hover{border-color:var(--red)}
+.media.gal,.media.ext{cursor:pointer;border:1.3px solid transparent;transition:border-color .18s}
+.media.ext{display:block;text-decoration:none}
+.media.gal:hover,.media.ext:hover{border-color:var(--red)}
 .media img,.media video,.media iframe{width:100%;height:100%;object-fit:cover;border:0}
 .ph{border:1.5px dashed var(--line);border-radius:12px;color:var(--soft);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:20px;text-align:center;margin:20px;width:calc(100% - 40px)}
 .tapnote{font-size:.7rem;color:var(--soft);text-align:center;letter-spacing:.04em}
@@ -823,12 +824,12 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         </div>
         <div class="mediarow two">
           <div class="cell">
-            <div class="media gal" data-images="press-salon-01.jpg|press-salon-02.jpg" data-caps="Salon, July 2020|Salon, July 2020"><img class="auto" src="press-salon-01.jpg" onerror="this.remove()" alt=""><div class="ph">Salon feature</div></div>
-            <p class="tapnote">Click to read, right here.</p>
+            <a class="media ext" href="REPLACE-SALON-ARTICLE-URL" target="_blank" rel="noopener"><img class="auto" src="press-salon-01.jpg" onerror="this.remove()" alt=""><div class="ph">Salon feature</div></a>
+            <p class="tapnote">Click to read on Salon.</p>
           </div>
           <div class="cell">
-            <div class="media gal" data-images="press-levis-01.jpg|press-levis-02.jpg" data-caps="Levi's Off the Cuff, August 2020|Levi's Off the Cuff, August 2020"><img class="auto" src="press-levis-01.jpg" onerror="this.remove()" alt=""><div class="ph">Levi's Off the Cuff feature</div></div>
-            <p class="tapnote">Click to read, right here.</p>
+            <a class="media ext" href="REPLACE-LEVIS-ARTICLE-URL" target="_blank" rel="noopener"><img class="auto" src="press-levis-01.jpg" onerror="this.remove()" alt=""><div class="ph">Levi's Off the Cuff feature</div></a>
+            <p class="tapnote">Click to read on Levi's Off the Cuff.</p>
           </div>
         </div>
       </div>
