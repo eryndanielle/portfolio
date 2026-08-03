@@ -27,8 +27,6 @@ DIVIDER COVER IMAGES: every preview card on the six header slides has a
   case when clicked; that needs no setup.
 VIDEO EMBEDS (YouTube/Vimeo): on any .media slot, remove the "gal"
   class and paste the platform's <iframe> embed code inside the div.
-HEADSHOTS: the cover and the final slide each have a slot that says
-  "Headshot". Replace that word with <img src="eryn-headshot.jpg">.
 ADD OR REMOVE GALLERY ITEMS FREELY (no fixed count):
   Every photo gallery auto-detects sequentially numbered files, so a
   gallery can hold as many or as few items as you want.
@@ -105,7 +103,7 @@ h2.big span{color:var(--red)}
 .lead{font-size:clamp(1rem,1.8vw,1.15rem);max-width:70ch}
 
 /* ---------- cover ---------- */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:44px;align-items:center}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:44px;align-items:center}
 @media(max-width:820px){.hero{grid-template-columns:1fr}.hero .right{max-width:300px}}
 .hero-title{font-size:clamp(3rem,9vw,6.2rem);font-weight:700;text-transform:uppercase;letter-spacing:-.03em;line-height:.94;margin-bottom:24px;color:var(--purple)}
 .hero-title span{color:var(--red)}
@@ -298,7 +296,7 @@ a.phone:hover{transform:translateY(-3px)}
 
 /* ---------- finale ---------- */
 .finale{background:linear-gradient(160deg,var(--egg) 0%,var(--deep) 100%);color:#fff;border-bottom:none}
-.finalegrid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:40px;align-items:center}
+.finalegrid{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
 @media(max-width:820px){.finalegrid{grid-template-columns:1fr}}
 .finale h2.close{font-size:clamp(2.1rem,6vw,4rem);font-weight:700;text-transform:uppercase;letter-spacing:-.025em;line-height:.98;margin-bottom:18px}
 .finale h2.close span{color:var(--red)}
@@ -332,9 +330,6 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         <div class="meta sub2">
           <span class="mpill loc">Global in Perspective, Living in New York</span>
         </div>
-      </div>
-      <div class="right">
-        <div class="headshot"><img class="auto" src="eryn-headshot-cover.jpg" onerror="this.remove()" alt="">Headshot</div>
       </div>
     </div>
   </div>
@@ -776,7 +771,7 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
       </div>
       <div class="side">
         <div class="phones grow0">
-          <a class="phone" href="https://www.instagram.com/eryn__danielle/" target="_blank" rel="noopener">
+          <a class="phone" href="https://www.instagram.com/p/CTU3APmFtXs/" target="_blank" rel="noopener">
             <div class="pframe"><div class="pnotch"></div><div class="pscreen"><img class="auto" src="phone-cuup.jpg" onerror="this.remove()" alt=""><div class="ph">CUUP</div></div></div>
             <div class="pcap"><b>CUUP</b><br>See it on Instagram.</div>
           </a>
@@ -817,11 +812,11 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
         </div>
         <div class="mediarow two">
           <div class="cell">
-            <a class="media ext" href="REPLACE-SALON-ARTICLE-URL" target="_blank" rel="noopener"><img class="auto" src="press-salon-01.jpg" onerror="this.remove()" alt=""><div class="ph">Salon feature</div></a>
+            <a class="media ext" href="https://www.salon.com/2020/07/11/allies-great-white-awakening-anti-racism-training/" target="_blank" rel="noopener"><img class="auto" src="press-salon-01.jpg" onerror="this.remove()" alt=""><div class="ph">Salon feature</div></a>
             <p class="tapnote">Click to read on Salon.</p>
           </div>
           <div class="cell">
-            <a class="media ext" href="REPLACE-LEVIS-ARTICLE-URL" target="_blank" rel="noopener"><img class="auto" src="press-levis-01.jpg" onerror="this.remove()" alt=""><div class="ph">Levi's Off the Cuff feature</div></a>
+            <a class="media ext" href="https://www.levi.com/US/en_US/blog/article/tahia-eryn-on-spaces-for-people-of-color" target="_blank" rel="noopener"><img class="auto" src="press-levis-01.jpg" onerror="this.remove()" alt=""><div class="ph">Levi's Off the Cuff feature</div></a>
             <p class="tapnote">Click to read on Levi's Off the Cuff.</p>
           </div>
         </div>
@@ -946,16 +941,14 @@ a.ccard b{display:block;margin:6px 0 1px;font-size:.94rem}
     <span class="eyebrow">Thank You!</span>
     <div class="finalegrid">
       <div>
-        <h2 class="close">Let's Build <span>Together</span></h2>
+        <h2 class="close">Building Brands <span>of the Future</span></h2>
         <div class="ccards">
           <a class="ccard" href="mailto:hi@eryndanielle.co"><span class="lt">Email</span><b>hi@eryndanielle.co</b></a>
           <a class="ccard" href="https://eryndanielle.co" target="_blank" rel="noopener"><span class="lt">Website</span><b>eryndanielle.co</b></a>
           <a class="ccard" href="https://www.instagram.com/eryn__danielle/" target="_blank" rel="noopener"><span class="lt">Instagram</span><b>@eryn__danielle</b></a>
         </div>
-        <a class="cta" href="mailto:hi@eryndanielle.co">Say Hello</a>
         <p class="footer">Portfolio of work by Eryn Danielle. Not to be copied or shared without permission.</p>
       </div>
-      <div class="headshot"><img class="auto" src="eryn-headshot-final.jpg" onerror="this.remove()" alt="">Headshot</div>
     </div>
   </div>
 </section>
